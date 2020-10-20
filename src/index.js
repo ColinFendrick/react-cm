@@ -1,8 +1,8 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
+import { unstable_createRoot as createRoot } from 'react-dom';
 
 import App from './App';
 
-ReactDOM.unstable_createRoot(
+createRoot(
 	document.getElementById('root')
-).render(<App />);
+).render(<React.StrictMode><App /></React.StrictMode>);
