@@ -5,6 +5,8 @@ import React, {
 	lazy,
 	Suspense
 } from 'react';
+import { Spinner } from 'reactstrap';
+
 import { createPhotosResource } from './modules/photoLoading';
 
 const PhotoList = lazy(() => import('./components/PhotoList.js'));
@@ -20,7 +22,7 @@ export default () => {
 			startTransition(() => {
 				setPhotosResource(createPhotosResource());
 			});
-		}, 100);
+		}, 10000);
 
 		return () => clearTimeout(tid);
 	}, []);
@@ -29,7 +31,7 @@ export default () => {
 		<div>
 			<h1>My Sample App</h1>
 			<p>Some content here to digest...</p>
-			<Suspense fallback={<b>Loading ...</b>}>
+			<Suspense fallback={<Spinner animation="border" />}>
 				<PhotoList
 					resource={photosResource}
 					pending={isPending}
