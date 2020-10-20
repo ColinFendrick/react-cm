@@ -34,6 +34,7 @@
       "error",
       "unix"
     ],
+    "no-undef": "error",
     "comma-dangle": ["error", "never"],
     "quotes": [
       "error",
