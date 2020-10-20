@@ -10,7 +10,9 @@ import { createPhotosResource } from './modules/photoLoading';
 const PhotoList = lazy(() => import('./components/PhotoList.js'));
 
 export default () => {
-	const [photosResource, setPhotosResource] = useState();
+	const [photosResource, setPhotosResource] = useState({
+		read: () => ([]) // start with return of same data structure we want
+	});
 	const [startTransition, isPending] = useTransition(500);
 
 	useEffect(() => {

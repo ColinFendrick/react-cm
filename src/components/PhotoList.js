@@ -5,13 +5,11 @@ export default ({ resource }) => {
 
 	useEffect(() => {
 		(async () => {
-			if (resource) { // comes in as undefined
-				try {
-					const res = await resource;
-					setPhotos(res.read);
-				} catch (e) {
-					console.log(e);
-				}
+			try {
+				const res = await resource;
+				setPhotos(res.read);
+			} catch (e) {
+				console.log(e);
 			}
 
 		})();

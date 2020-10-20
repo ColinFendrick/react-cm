@@ -21,13 +21,14 @@ const fetchPhotos = async () => {
 export const createPhotosResource = async () => {
 	let status = 'pending';
 	let result = undefined;
+	let read;
 
 	try {
 		const photos = await fetchPhotos();
 		status = 'success';
 		result = photos;
 
-		var read = () => {
+		read = () => {
 			switch (status) {
 			case 'pending':
 				throw photos;
@@ -42,6 +43,7 @@ export const createPhotosResource = async () => {
 	} catch (e) {
 		status = 'error';
 		result = e;
+		read = () => [e];
 		console.log('createphotoerror from fetchpghotos:', e);
 
 		return { read };
